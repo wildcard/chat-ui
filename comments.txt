@@ -2,6 +2,10 @@ Add your general design and decision comments here:
 
 
 
+this text in the server is confusing:
+
+"Welcome to Spot.IM's chat server. Please send all your requests to the \"spotim/chat\" channel"
+the word channel is not used appropriately
 
 
 
