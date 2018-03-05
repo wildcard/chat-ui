@@ -5,6 +5,7 @@ import React from 'react'
 import logo from '../assets/spotim-logo.jpg'
 import {Container, Image} from 'semantic-ui-react'
 import styled from 'styled-components';
+import Chat from './Chat';
 
 const Logo = styled.div`
       img{
@@ -27,6 +28,7 @@ class App extends React.PureComponent {
           <Image size={'tiny'} src={logo}/>
         </Logo>
 
+        <Chat socket={this.props.socket} />
       </div>
     </Container>
   }

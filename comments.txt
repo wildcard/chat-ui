@@ -1,11 +1,12 @@
 Add your general design and decision comments here:
 
+- started on 05/02/2018 19:00
 
+> this text in the server is confusing:
 
-this text in the server is confusing:
-
-"Welcome to Spot.IM's chat server. Please send all your requests to the \"spotim/chat\" channel"
+> "Welcome to Spot.IM's chat server. Please send all your requests to the \"spotim/chat\" channel"
 the word channel is not used appropriately
+- I struggled with this part for 1.5 hours 
 
 
 

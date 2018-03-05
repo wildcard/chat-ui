@@ -9,28 +9,15 @@ import io from "socket.io-client";
 
 ReactDOM.render(<App />, document.getElementById("root"));
 
-
 //connecting to Socket.IO chat server
 const socket = io("https://spotim-demo-chat-server.herokuapp.com");
 
-window.io = io;
-window.socket = socket;
-
-// io.on('connection', function(socket){
-//   socket.join('spotim/chat');
-// });
-
 socket.on("connect", function() {
-  // io.to('spotim/chat').emit('message', 'Hi!');
-  socket.emit('spotim/chat', { message: 'Hi! test', user: 'kobi' });
-  
-  socket.on('spotim/chat', (data) => {
-    console.log('message recived!:', data);
-  });
-  
+  ReactDOM.render(<App socket={socket}/>, document.getElementById("root"));
   console.log("connected to chat server!");
 });
 
 socket.on("disconnect", function() {
+  ReactDOM.render(<App disconnected socket={null}/>, document.getElementById("root"));
   console.log("disconnected from chat server!");
 });
