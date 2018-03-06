@@ -1,12 +1,16 @@
 import PropTypes from 'prop-types';
 
-export const UserPropType = PropTypes.shape({
+const User = {
   username: PropTypes.string,
   avatar: PropTypes.string,
-});
+};
 
-export const MessagePropType = PropTypes.shape({
-  ...UserPropType,
-  // text: PropTypes.string.isRequired,
+export const UserPropType = PropTypes.shape(User);
+
+export const Message = {
+  ...User,
+  text: PropTypes.string.isRequired,
   isSelf: PropTypes.bool,
-});
+};
+
+export const MessagePropType = PropTypes.shape(Message);

@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import ChatService from '../chat';
 import MessageCreationArea from './MessageCreationArea';
 import MessageListArea from './MessageListArea';
-import { MessagePropType } from '../prop-types';
 
 class Chat extends React.Component {
   constructor(props) {

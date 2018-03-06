@@ -5,7 +5,7 @@ import classNames from 'classnames';
 import Chip from 'material-ui/Chip';
 import Typography from 'material-ui/Typography';
 import ChatAvatar from './Avatar';
-import { MessagePropType } from '../prop-types';
+import { Message as MessagePropType } from '../prop-types';
 
 const styles = theme => ({
   root: {
@@ -42,7 +42,7 @@ function Message(props) {
 }
 
 Message.propTypes = {
-  // classes: PropTypes.object.isRequired,
+  classes: PropTypes.object.isRequired,
   ...MessagePropType,
 };
 

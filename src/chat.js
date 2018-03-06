@@ -2,25 +2,9 @@
 // b. When the user sends a message you should use socket io to send messages in the following format:  {avatar:"...",username:"...",text:"..."'}
 // i. You may add additional fields if you like.
 // c. You should listen for and render incoming chat messages.
-
-import { hashCode } from 'hashcode';
-const HashCode = hashCode();
+import { chooseAvatar } from './chat-avatar';
 
 const EVENT_NAME = 'spotim/chat';
-
-const images = [
-  'https://spotim-demo-chat-server.herokuapp.com/avatars/001-snorlax.png',
-'https://spotim-demo-chat-server.herokuapp.com/avatars/002-psyduck.png',
-'https://spotim-demo-chat-server.herokuapp.com/avatars/003-pikachu.png',
-'https://spotim-demo-chat-server.herokuapp.com/avatars/004-jigglypuff.png',
-'https://spotim-demo-chat-server.herokuapp.com/avatars/005-bullbasaur.png',]
-
-export function chooseAvatar(username) {
-  const userNameHashCode = HashCode.value(username);
-  const avatarIndex = Math.abs(userNameHashCode % images.length);
-
-  return images[avatarIndex];
-}
 
 class Chat {
   constructor(socket, messageReceiveCallback) {

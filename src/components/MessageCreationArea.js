@@ -123,10 +123,12 @@ class MessageCreationArea extends React.Component {
           margin="normal"
         />
 
-        <Button onClick={this.send} className={classes.button} variant="raised" color="primary">
-        Send
-        <SendIcon className={classes.rightIcon}/>
-      </Button>
+        <Button onClick={this.send}
+          className={classes.button}
+          variant="raised" color="primary">
+          Send
+          <SendIcon className={classes.rightIcon}/>
+        </Button>
       </form>);
   }
 }
