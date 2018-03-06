@@ -6,9 +6,9 @@ Add your general design and decision comments here:
 
 > "Welcome to Spot.IM's chat server. Please send all your requests to the \"spotim/chat\" channel"
 the word channel is not used appropriately
-- I struggled with this part for 1.5 hours 
+- I struggled with this part for 1.5 hours
 
-
+- stoped at 05/02/2018 23:30 - working solution, missing more UI/UX styling + tests
 
 Feedback regarding this exam is always welcomed.
 What did you like? What didn't you like? What was missing?
