@@ -10,14 +10,28 @@ import { Message as MessagePropType } from '../prop-types';
 const styles = theme => ({
   root: {
     display: 'flex',
-    justifyContent: 'center',
-    flexWrap: 'wrap',
+    justifyContent: 'flex-start',
+    // flexWrap: 'wrap',
+  },
+  rootSelf: {
+    justifyContent: 'flex-end',
+  },
+  messageContainer: {
+    display: 'flex',
+    flexDirection: 'column',
+  },
+  messageHead: {
+    display: 'flex',
+    flexDirection: 'row',
+    alignItems: 'center',
   },
   message: {
     margin: theme.spacing.unit,
   },
   selfMessage: {
-    background: 'green'
+
+    color: '#fff',
+    background: '#0082DD',
   },
 });
 
@@ -27,17 +41,24 @@ function Message(props) {
     username,
     text,
     avatar,
-    isSelf,
-    ...other,
+    isMe,
+    prevMessageIsSameUser,
+    ...other
   } = props;
-  return (<div className={classes.root} {...other}>
-        <div>
-          <ChatAvatar tiny src={avatar} username={username}/>
-          <Typography gutterBottom noWrap>{username}</Typography>
-        </div>
-        <Chip label={text} className={classNames(classes.message, {
-          [classes.selfMessage]: isSelf
+
+  return (<div className={classNames(classes.root, {
+    [classes.rootSelf]: isMe
+  })} {...other}>
+    <div className={classes.messageContainer}>
+      {(prevMessageIsSameUser || isMe) ? null : <div className={classes.messageHead}>
+        <ChatAvatar tiny src={avatar} username={username}/>
+        <Typography gutterBottom noWrap>{username}</Typography>
+      </div>}
+
+      <Chip label={text} className={classNames(classes.message, {
+          [classes.selfMessage]: isMe
         })} />
+    </div>
     </div>);
 }
 

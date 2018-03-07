@@ -10,7 +10,8 @@ export const UserPropType = PropTypes.shape(User);
 export const Message = {
   ...User,
   text: PropTypes.string.isRequired,
-  isSelf: PropTypes.bool,
+  isMe: PropTypes.bool,
+  prevMessageIsSameUser: PropTypes.bool,
 };
 
 export const MessagePropType = PropTypes.shape(Message);

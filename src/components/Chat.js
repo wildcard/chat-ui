@@ -1,8 +1,18 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { withStyles } from 'material-ui/styles';
 import ChatService from '../chat';
 import MessageCreationArea from './MessageCreationArea';
 import MessageListArea from './MessageListArea';
+
+const styles = {
+  root: {
+    display: 'flex',
+    flexDirection: 'column',
+    height: 'calc(100vh - 150px)',
+  },
+
+}
 
 class Chat extends React.Component {
   constructor(props) {
@@ -11,7 +21,18 @@ class Chat extends React.Component {
 
     this.service = new ChatService(socket, this.receiveMessage);
     this.state = {
-      messages: [],
+      messages: [
+        // {text: 'kobi kadosh', username: 'kobi 1'},
+        // {text: 'kobi 2', username: 'kobi 2', isMe: true },
+        // {text: 'kobi 1 1', username: 'kobi' },
+        // {text: 'kobi 1 1', username: 'kobi', prevMessageIsSameUser: true},
+        // {text: 'kobi 1 1', username: 'kobi', prevMessageIsSameUser: true},
+        // {text: 'kobi 2', username: 'kobi 2', isMe: true },
+        // {text: 'kobi 2', username: 'kobi 2', isMe: true, prevMessageIsSameUser: true },
+        // {text: 'kobi', username: 'kobi'},
+        // {text: 'kobi 2', username: 'kobi 2', isMe: true },
+        // {text: 'kobi 2', username: 'kobi 2', isMe: true, prevMessageIsSameUser: true },
+      ],
     }
   }
 
@@ -46,11 +67,12 @@ class Chat extends React.Component {
   }
 
   render() {
+    const { classes } = this.props;
     const {
       messages
     } = this.state;
 
-    return <div>
+    return <div className={classes.root}>
       <MessageListArea messages={messages}/>
 
       <MessageCreationArea
@@ -66,4 +88,4 @@ Chat.propTypes = {
   socket: PropTypes.object,
 }
 
-export default Chat;
+export default withStyles(styles)(Chat);

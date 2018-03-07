@@ -16,8 +16,10 @@ import Button from 'material-ui/Button';
 import SendIcon from 'material-ui-icons/Send';
 import TextField from 'material-ui/TextField';
 import { InputAdornment } from 'material-ui/Input';
+import Tooltip from 'material-ui/Tooltip';
 import ChatAvatar from './Avatar';
 import { UserPropType } from '../prop-types';
+import { FOOTER_HEIGHT } from '../constants';
 
 const styles = theme => {
   const textField = {
@@ -29,9 +31,20 @@ const styles = theme => {
   return {
     container: {
       display: 'flex',
-      flexWrap: 'wrap',
+      justifyContent: 'space-between',
+      alignItems: 'center',
+      height: FOOTER_HEIGHT,
+    },
+    inputContainer: {
+      display: 'flex',
+      flexDirection: 'column',
+      flex: '1 0 auto',
     },
     textField,
+    messageTextField: {
+      ...textField,
+      width: '100%',
+    },
     errorTextField: {
       ...textField,
       background: 'red',
@@ -39,6 +52,9 @@ const styles = theme => {
     rightIcon: {
       marginLeft: theme.spacing.unit,
     },
+    button: {
+
+    }
   };
 };
 
@@ -70,7 +86,9 @@ class MessageCreationArea extends React.Component {
     this.setState({ message: '' });
   }
 
-  send = () => {
+  send = (e) => {
+    e && e.preventDefault();
+
     const {
       message,
     } = this.state;
@@ -97,38 +115,42 @@ class MessageCreationArea extends React.Component {
     return (<form className={classes.container}
         onSubmit={this.send}
         noValidate autoComplete="off">
-        <TextField
-              id="username"
-              label="User Name"
-              className={classes.textField}
-              value={this.state.username}
-              onChange={this.handleChange('username')}
-              margin="normal"
-              InputProps={{
-                startAdornment: this.state.username && <InputAdornment position="start">
-                  <ChatAvatar tiny username={this.state.username} src={this.avatar} />
-                </InputAdornment>,
-              }}
-            />
+        <div className={classes.inputContainer}>
+          <TextField
+                id="username"
+                label="User Name"
+                className={classes.textField}
+                value={this.state.username}
+                onChange={this.handleChange('username')}
+                margin="normal"
+                InputProps={{
+                  startAdornment: this.state.username && <InputAdornment position="start">
+                    <ChatAvatar tiny username={this.state.username} src={this.avatar} />
+                  </InputAdornment>,
+                }}
+              />
 
-        <TextField
-          id="message"
-          label="Message"
-          multiline
-          rowsMax="4"
-          value={this.state.message}
-          onChange={this.handleChange('message')}
-          className={messageError ? classes.errorTextField : classes.textField}
-          helperText={messageError ? "I'm sure you have something smart to share with your friends 🤓" : null}
-          margin="normal"
-        />
+          <TextField
+            error={messageError}
+            id="message"
+            label="Message"
+            multiline
+            rowsMax="4"
+            value={this.state.message}
+            onChange={this.handleChange('message')}
+            className={classes.messageTextField}
+            helperText={messageError ? "I'm sure you have something smart to share with your friends 🤓" : null}
+            margin="normal"
+          />
+        </div>
 
-        <Button onClick={this.send}
-          className={classes.button}
-          variant="raised" color="primary">
-          Send
-          <SendIcon className={classes.rightIcon}/>
-        </Button>
+        <Tooltip id="tooltip-send-button" title="Send" placement="top">
+          <Button onClick={this.send}
+            className={classes.button}
+            variant="fab" color="primary">
+            <SendIcon/>
+          </Button>
+        </Tooltip>
       </form>);
   }
 }

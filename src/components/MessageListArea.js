@@ -5,12 +5,26 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
+import { withStyles } from 'material-ui/styles';
 import Message from './Message';
 import { MessagePropType } from '../prop-types';
+import { HEADER_HEIGHT, FOOTER_HEIGHT } from '../constants';
+
+const styles = {
+  root: {
+    flex: '1 0 auto',
+    maxHeight: `calc(100vh - ${HEADER_HEIGHT} - ${FOOTER_HEIGHT})`,
+    overflowY: 'auto',
+  }
+}
 
 function MessageListArea(props) {
-  const { messages } = props;
-  return (<div>
+  const {
+    messages,
+    classes,
+  } = props;
+
+  return (<div className={classes.root}>
     {messages ? messages.map((message, index) => {
       return (<Message key={`${message.username}:${index}`} {...message}/>);
     }) : null}
@@ -21,4 +35,4 @@ MessageListArea.propTypes = {
   messages: PropTypes.arrayOf(MessagePropType)
 }
 
-export default MessageListArea;
+export default withStyles(styles)(MessageListArea);

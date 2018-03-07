@@ -11,10 +11,19 @@ class Chat {
     this.socket = socket;
     this.messageReceiveCallback = messageReceiveCallback;
     this.user = this.getUser() || null;
+    this.lastMessage = null;
 
     if (socket) {
       socket.on(EVENT_NAME, (data) => {
-        messageReceiveCallback({...data, isSelf: data.username === this.user.username});
+        const message = {
+          ...data,
+          isMe: data.username === this.user.username,
+          prevMessageIsSameUser: this.lastMessage &&
+            this.lastMessage.username === data.username,
+        };
+
+        messageReceiveCallback(message);
+        this.lastMessage = message;
       });
     }
     //  else if (socket && socket.hasListeners()) {
