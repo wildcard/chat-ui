@@ -12,6 +12,7 @@ export const Message = {
   text: PropTypes.string.isRequired,
   isMe: PropTypes.bool,
   prevMessageIsSameUser: PropTypes.bool,
+  isLast: PropTypes.bool,
 };
 
 export const MessagePropType = PropTypes.shape(Message);

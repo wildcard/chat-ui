@@ -56,7 +56,6 @@ class Chat extends React.Component {
   }
 
   receiveMessage = (data) => {
-    console.log('message recived!:', data);
     this.setState({
       messages: [...this.state.messages.slice(0), data]
     })

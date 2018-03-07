@@ -23,10 +23,11 @@ function MessageListArea(props) {
     messages,
     classes,
   } = props;
+  const lastMessageIndex = messages && messages.length - 1;
 
   return (<div className={classes.root}>
     {messages ? messages.map((message, index) => {
-      return (<Message key={`${message.username}:${index}`} {...message}/>);
+      return (<Message key={`${message.username}:${index}`} {...message} isLast={lastMessageIndex === index} />);
     }) : null}
     </div>);
 }
