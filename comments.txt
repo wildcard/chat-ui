@@ -7,7 +7,6 @@ Add your general design and decision comments here:
 > "Welcome to Spot.IM's chat server. Please send all your requests to the \"spotim/chat\" channel"
 the word channel is not used appropriately
 - I struggled with this part for 1.5 hours
-
 - stoped at 05/03/2018 23:30 - working solution, missing more UI/UX styling + tests
 
 - started 07/03/2018 01:30
@@ -15,8 +14,8 @@ the word channel is not used appropriately
 - stopped 07/03/2018 05:00
 - 07/03/2018 05:30, added scrollIntoView for the last message (so you can keep following)
 
-- started 08/03/2018 18:00 - 20:00 - start testing
-- started 08/03/2018 21:30 - 22:30  - unit testing business
+- started 07/03/2018 18:00 - 20:00 - start testing
+- started 07/03/2018 21:30 - 22:30  - unit testing business
 - 08/03/2018 23:30 - 00:15  - snapshot tests
 - 08/03/2018 23:30 - 00:30  - prettier + screenshots
 
