@@ -108,6 +108,15 @@ class MessageCreationArea extends React.Component {
     }
   }
 
+  handleMessageKeyDown = (e) => {
+    if (e.keyCode === 13 && (
+      !e.altKey && !e.ctrlKey && !e.shiftKey
+    )) {
+        this.send();
+        e.preventDefault();
+    }
+  }
+
   render() {
     const { classes } = this.props;
     const messageError = this.state.emptyMessage && this.state.message === '';
@@ -136,6 +145,7 @@ class MessageCreationArea extends React.Component {
             label="Message"
             multiline
             rowsMax="4"
+            onKeyDown={this.handleMessageKeyDown}
             value={this.state.message}
             onChange={this.handleChange('message')}
             className={classes.messageTextField}

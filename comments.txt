@@ -1,6 +1,6 @@
 Add your general design and decision comments here:
 
-- started on 05/02/2018 19:00
+- started on 05/03/2018 19:00
 
 > this text in the server is confusing:
 
@@ -8,7 +8,11 @@ Add your general design and decision comments here:
 the word channel is not used appropriately
 - I struggled with this part for 1.5 hours
 
-- stoped at 05/02/2018 23:30 - working solution, missing more UI/UX styling + tests
+- stoped at 05/03/2018 23:30 - working solution, missing more UI/UX styling + tests
+
+- started 07/03/2018 01:30
+- styled the components, better chat experince (enter), use pre wrap to preserve line breaks 
+- stopped 07/03/2018 05:00
 
 Feedback regarding this exam is always welcomed.
 What did you like? What didn't you like? What was missing?

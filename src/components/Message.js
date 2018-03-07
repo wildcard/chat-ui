@@ -29,10 +29,18 @@ const styles = theme => ({
     margin: theme.spacing.unit,
   },
   selfMessage: {
-
     color: '#fff',
     background: '#0082DD',
   },
+  messageTextRoot: {
+    height: 'auto',
+    minHeight: '32px',
+  },
+  messageTextLabel: {
+    whiteSpace: 'pre-wrap',
+    paddingTop: '7px',
+    paddingBottom: '6px',
+  }
 });
 
 function Message(props) {
@@ -55,7 +63,7 @@ function Message(props) {
         <Typography gutterBottom noWrap>{username}</Typography>
       </div>}
 
-      <Chip label={text} className={classNames(classes.message, {
+      <Chip classes={{root: classes.messageTextRoot, label: classes.messageTextLabel}} label={text} className={classNames(classes.message, {
           [classes.selfMessage]: isMe
         })} />
     </div>
