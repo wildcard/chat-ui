@@ -4,7 +4,58 @@
 // c. You should listen for and render incoming chat messages.
 import { chooseAvatar } from './chat-avatar';
 
-const EVENT_NAME = 'spotim/chat';
+export const EVENT_NAME = 'spotim/chat';
+
+export class NullSocketError extends Error {
+}
+
+export class NullUserError extends Error {
+}
+
+export class ChatMessageFormatError extends Error {
+  constructor({data: rawMessageData, missingProperty} = {}, ...params) {
+    super(...params);
+
+    this.rawMessageData = rawMessageData;
+    this.missingProperty = missingProperty;
+  }
+}
+
+function validateMessageFormat(data) {
+  if (!data) {
+    throw new ChatMessageFormatError('falsy object can\'t be a message');
+  }
+
+  const {
+    avatar,
+    username,
+    text,
+  } = data;
+
+  ['avatar',
+  'username',
+  'text'].forEach(requiredProperty => {
+    if (!data[requiredProperty]) {
+      throw new ChatMessageFormatError({data, missingProperty: requiredProperty}, `${requiredProperty} is required for any message`);
+    }
+  });
+}
+
+export function generateMessage(data, username, lastMessage) {
+  let message = {...data};
+
+  validateMessageFormat(data);
+
+  if (username) {
+    message.isMe = data.username === username;
+  }
+
+  if (lastMessage) {
+    message.prevMessageIsSameUser = lastMessage.username === data.username;
+  }
+
+  return message;
+}
 
 class Chat {
   constructor(socket, messageReceiveCallback) {
@@ -15,20 +66,12 @@ class Chat {
 
     if (socket) {
       socket.on(EVENT_NAME, (data) => {
-        const message = {
-          ...data,
-          isMe: data.username === this.user.username,
-          prevMessageIsSameUser: this.lastMessage &&
-            this.lastMessage.username === data.username,
-        };
+        const message = generateMessage(data, this.user.username, this.lastMessage);
 
         messageReceiveCallback(message);
         this.lastMessage = message;
       });
     }
-    //  else if (socket && socket.hasListeners()) {
-    //   socket.off(EVENT_NAME);
-    // }
   }
 
   getUser() {
@@ -66,11 +109,11 @@ class Chat {
 
   send(text) {
      if (!this.socket) {
-       throw new Error('Chat has been initialized with out a socket object!, can\'t call send yet');
+       throw new NullSocketError('Chat has been initialized without a socket object!, can\'t call send yet');
      }
 
      if (!this.user) {
-       throw new Error("User hasn't been set yet, please call 'setUser'");
+       throw new NullUserError("User hasn't been set yet, please call 'setUser'");
      }
 
     this.socket.emit(EVENT_NAME, {

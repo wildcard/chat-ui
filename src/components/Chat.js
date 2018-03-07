@@ -21,18 +21,7 @@ class Chat extends React.Component {
 
     this.service = new ChatService(socket, this.receiveMessage);
     this.state = {
-      messages: [
-        // {text: 'kobi kadosh', username: 'kobi 1'},
-        // {text: 'kobi 2', username: 'kobi 2', isMe: true },
-        // {text: 'kobi 1 1', username: 'kobi' },
-        // {text: 'kobi 1 1', username: 'kobi', prevMessageIsSameUser: true},
-        // {text: 'kobi 1 1', username: 'kobi', prevMessageIsSameUser: true},
-        // {text: 'kobi 2', username: 'kobi 2', isMe: true },
-        // {text: 'kobi 2', username: 'kobi 2', isMe: true, prevMessageIsSameUser: true },
-        // {text: 'kobi', username: 'kobi'},
-        // {text: 'kobi 2', username: 'kobi 2', isMe: true },
-        // {text: 'kobi 2', username: 'kobi 2', isMe: true, prevMessageIsSameUser: true },
-      ],
+      messages: [],
     }
   }
 

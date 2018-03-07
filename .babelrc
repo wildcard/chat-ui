@@ -1,6 +1,11 @@
 {
   "presets": ["react-app"],
   "plugins": [
-    ["transform-class-properties", { "spec": true }]
+    [
+      "transform-class-properties", { "spec": true },
+      ["babel-plugin-transform-builtin-extend", {
+            "globals": ["Error"]
+        }]
+    ]
   ]
 }

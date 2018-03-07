@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`generateMessage snapshot 1`] = `
+Object {
+  "avatar": "https://spotim-demo-chat-server.herokuapp.com/avatars/001-snorlax.png",
+  "text": "text message",
+  "username": "kobi.kadosh",
+}
+`;

@@ -15,5 +15,8 @@ the word channel is not used appropriately
 - stopped 07/03/2018 05:00
 - 07/03/2018 05:30, added scrollIntoView for the last message (so you can keep following)
 
+- started 07/03/2018 18:00 - 20:00 - start testing
+- started 07/03/2018 21:30 - 22:30  - unit testing business
+
 Feedback regarding this exam is always welcomed.
 What did you like? What didn't you like? What was missing?
