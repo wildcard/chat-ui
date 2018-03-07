@@ -18,7 +18,7 @@ the word channel is not used appropriately
 - started 07/03/2018 18:00 - 20:00 - start testing
 - started 07/03/2018 21:30 - 22:30  - unit testing business
 - 07/03/2018 23:30 - 00:15  - snapshot tests
-- 07/03/2018 23:30 - 00:30  - prettier
+- 07/03/2018 23:30 - 00:30  - prettier + screenshots
 
 Feedback regarding this exam is always welcomed.
 What did you like? What didn't you like? What was missing?
