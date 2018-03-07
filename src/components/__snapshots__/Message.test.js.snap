@@ -1,0 +1,205 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`snapshot  1`] = `
+<div
+  className="Message-root-1"
+>
+  <div
+    className="Message-messageContainer-3"
+  >
+    <div
+      className="Message-messageHead-4"
+    >
+      <div
+        className="MuiAvatar-root-12 ChatAvatar-tiny-10 ChatAvatar-avatar-9"
+      >
+        <img
+          alt="kobi.kadosh"
+          className="MuiAvatar-img-14"
+          sizes={undefined}
+          src="https://spotim-demo-chat-server.herokuapp.com/avatars/003-pikachu.png"
+          srcSet={undefined}
+        />
+      </div>
+      <p
+        className="MuiTypography-root-15 MuiTypography-body1-24 MuiTypography-noWrap-31 MuiTypography-gutterBottom-32"
+      >
+        kobi.kadosh
+      </p>
+    </div>
+    <div
+      className="MuiChip-root-39 Message-messageTextRoot-7 Message-message-5"
+      onClick={undefined}
+      onKeyDown={[Function]}
+      role="button"
+      tabIndex={-1}
+    >
+      <span
+        className="MuiChip-label-44 Message-messageTextLabel-8"
+      >
+        test message
+      </span>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`snapshot avatar 1`] = `
+<div
+  className="Message-root-1"
+>
+  <div
+    className="Message-messageContainer-3"
+  >
+    <div
+      className="Message-messageHead-4"
+    >
+      <div
+        className="MuiAvatar-root-12 ChatAvatar-tiny-10 ChatAvatar-avatar-9"
+      >
+        <img
+          alt="kobi.kadosh"
+          className="MuiAvatar-img-14"
+          sizes={undefined}
+          src="https://s3.amazonaws.com/uifaces/faces/twitter/jeremiespoken/128.jpg"
+          srcSet={undefined}
+        />
+      </div>
+      <p
+        className="MuiTypography-root-15 MuiTypography-body1-24 MuiTypography-noWrap-31 MuiTypography-gutterBottom-32"
+      >
+        kobi.kadosh
+      </p>
+    </div>
+    <div
+      className="MuiChip-root-39 Message-messageTextRoot-7 Message-message-5"
+      onClick={undefined}
+      onKeyDown={[Function]}
+      role="button"
+      tabIndex={-1}
+    >
+      <span
+        className="MuiChip-label-44 Message-messageTextLabel-8"
+      >
+        test message
+      </span>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`snapshot isLast 1`] = `
+<div
+  className="Message-root-1"
+>
+  <div
+    className="Message-messageContainer-3"
+  >
+    <div
+      className="Message-messageHead-4"
+    >
+      <div
+        className="MuiAvatar-root-12 ChatAvatar-tiny-10 ChatAvatar-avatar-9"
+      >
+        <img
+          alt="kobi.kadosh"
+          className="MuiAvatar-img-14"
+          sizes={undefined}
+          src="https://spotim-demo-chat-server.herokuapp.com/avatars/003-pikachu.png"
+          srcSet={undefined}
+        />
+      </div>
+      <p
+        className="MuiTypography-root-15 MuiTypography-body1-24 MuiTypography-noWrap-31 MuiTypography-gutterBottom-32"
+      >
+        kobi.kadosh
+      </p>
+    </div>
+    <div
+      className="MuiChip-root-39 Message-messageTextRoot-7 Message-message-5"
+      onClick={undefined}
+      onKeyDown={[Function]}
+      role="button"
+      tabIndex={-1}
+    >
+      <span
+        className="MuiChip-label-44 Message-messageTextLabel-8"
+      >
+        test message
+      </span>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`snapshot isMe + prevMessageIsSameUser 1`] = `
+<div
+  className="Message-root-1 Message-rootSelf-2"
+>
+  <div
+    className="Message-messageContainer-3"
+  >
+    <div
+      className="MuiChip-root-39 Message-messageTextRoot-7 Message-message-5 Message-selfMessage-6"
+      onClick={undefined}
+      onKeyDown={[Function]}
+      role="button"
+      tabIndex={-1}
+    >
+      <span
+        className="MuiChip-label-44 Message-messageTextLabel-8"
+      >
+        test message
+      </span>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`snapshot isMe 1`] = `
+<div
+  className="Message-root-1 Message-rootSelf-2"
+>
+  <div
+    className="Message-messageContainer-3"
+  >
+    <div
+      className="MuiChip-root-39 Message-messageTextRoot-7 Message-message-5 Message-selfMessage-6"
+      onClick={undefined}
+      onKeyDown={[Function]}
+      role="button"
+      tabIndex={-1}
+    >
+      <span
+        className="MuiChip-label-44 Message-messageTextLabel-8"
+      >
+        test message
+      </span>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`snapshot prevMessageIsSameUser 1`] = `
+<div
+  className="Message-root-1"
+>
+  <div
+    className="Message-messageContainer-3"
+  >
+    <div
+      className="MuiChip-root-39 Message-messageTextRoot-7 Message-message-5"
+      onClick={undefined}
+      onKeyDown={[Function]}
+      role="button"
+      tabIndex={-1}
+    >
+      <span
+        className="MuiChip-label-44 Message-messageTextLabel-8"
+      >
+        test message
+      </span>
+    </div>
+  </div>
+</div>
+`;

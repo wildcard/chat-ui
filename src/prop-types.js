@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 
 const User = {
-  username: PropTypes.string,
+  username: PropTypes.string.isRequired,
   avatar: PropTypes.string,
 };
 

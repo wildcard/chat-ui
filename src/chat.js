@@ -26,12 +26,6 @@ function validateMessageFormat(data) {
     throw new ChatMessageFormatError('falsy object can\'t be a message');
   }
 
-  const {
-    avatar,
-    username,
-    text,
-  } = data;
-
   ['avatar',
   'username',
   'text'].forEach(requiredProperty => {

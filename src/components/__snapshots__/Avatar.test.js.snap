@@ -1,0 +1,57 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`snapshot  1`] = `
+<div
+  className="MuiAvatar-root-4 ChatAvatar-avatar-1"
+>
+  <img
+    alt="kobi.kadosh"
+    className="MuiAvatar-img-6"
+    sizes={undefined}
+    src="https://spotim-demo-chat-server.herokuapp.com/avatars/003-pikachu.png"
+    srcSet={undefined}
+  />
+</div>
+`;
+
+exports[`snapshot big 1`] = `
+<div
+  className="MuiAvatar-root-4 ChatAvatar-big-3 ChatAvatar-avatar-1"
+>
+  <img
+    alt="kobi.kadosh"
+    className="MuiAvatar-img-6"
+    sizes={undefined}
+    src="https://spotim-demo-chat-server.herokuapp.com/avatars/003-pikachu.png"
+    srcSet={undefined}
+  />
+</div>
+`;
+
+exports[`snapshot src 1`] = `
+<div
+  className="MuiAvatar-root-4 ChatAvatar-avatar-1"
+>
+  <img
+    alt="kobi.kadosh"
+    className="MuiAvatar-img-6"
+    sizes={undefined}
+    src="https://s3.amazonaws.com/uifaces/faces/twitter/jeremiespoken/128.jpg"
+    srcSet={undefined}
+  />
+</div>
+`;
+
+exports[`snapshot tiny 1`] = `
+<div
+  className="MuiAvatar-root-4 ChatAvatar-tiny-2 ChatAvatar-avatar-1"
+>
+  <img
+    alt="kobi.kadosh"
+    className="MuiAvatar-img-6"
+    sizes={undefined}
+    src="https://spotim-demo-chat-server.herokuapp.com/avatars/003-pikachu.png"
+    srcSet={undefined}
+  />
+</div>
+`;

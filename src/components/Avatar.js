@@ -38,6 +38,8 @@ ChatAvatar.propTypes = {
   classes: PropTypes.object.isRequired,
   username: PropTypes.string.isRequired,
   src: PropTypes.string,
+  big: PropTypes.bool,
+  tiny: PropTypes.bool,
 };
 
 export default withStyles(styles)(ChatAvatar);

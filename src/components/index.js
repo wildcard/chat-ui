@@ -5,6 +5,7 @@ import React from 'react'
 import logo from '../assets/spotim-logo.jpg'
 import {Container, Image} from 'semantic-ui-react'
 import styled from 'styled-components';
+import Snackbar from 'material-ui/Snackbar';
 import Chat from './Chat';
 import { HEADER_HEIGHT } from '../constants';
 
@@ -40,6 +41,19 @@ class App extends React.PureComponent {
       <SpotimChatHeader/>
 
       <Chat socket={this.props.socket} />
+
+      <Snackbar
+        anchorOrigin={{
+          vertical: 'bottom',
+          horizontal: 'right',
+        }}
+        open={this.props.disconnected}
+        autoHideDuration={6000}
+        SnackbarContentProps={{
+          'aria-describedby': 'message-id',
+        }}
+        message={<span id="message-id">You have been disconnected, please try checking your network</span>}
+      />
     </Container>
   }
 }
