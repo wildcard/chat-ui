@@ -15,25 +15,32 @@ const styles = {
     flex: '1 0 auto',
     maxHeight: `calc(100vh - ${HEADER_HEIGHT} - ${FOOTER_HEIGHT})`,
     overflowY: 'auto',
-  }
-}
+  },
+};
 
 function MessageListArea(props) {
-  const {
-    messages,
-    classes,
-  } = props;
+  const { messages, classes } = props;
   const lastMessageIndex = messages && messages.length - 1;
 
-  return (<div className={classes.root}>
-    {messages ? messages.map((message, index) => {
-      return (<Message key={`${message.username}:${index}`} {...message} isLast={lastMessageIndex === index} />);
-    }) : null}
-    </div>);
+  return (
+    <div className={classes.root}>
+      {messages
+        ? messages.map((message, index) => {
+            return (
+              <Message
+                key={`${message.username}:${index}`}
+                {...message}
+                isLast={lastMessageIndex === index}
+              />
+            );
+          })
+        : null}
+    </div>
+  );
 }
 
 MessageListArea.propTypes = {
-  messages: PropTypes.arrayOf(MessagePropType)
-}
+  messages: PropTypes.arrayOf(MessagePropType),
+};
 
 export default withStyles(styles)(MessageListArea);

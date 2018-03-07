@@ -39,43 +39,62 @@ const styles = theme => ({
     whiteSpace: 'pre-wrap',
     paddingTop: '7px',
     paddingBottom: '6px',
-  }
+  },
 });
 
 class Message extends React.PureComponent {
   componentDidMount() {
-    this.element && this.props.isLast && this.element.scrollIntoView({behavior: "smooth"});
+    this.element &&
+      this.props.isLast &&
+      this.element.scrollIntoView({ behavior: 'smooth' });
   }
 
   render() {
-   const {
-     classes,
-     username,
-     text,
-     avatar,
-     isMe,
-     prevMessageIsSameUser,
-     isLast,
-     ...other
-   } = this.props;
+    const {
+      classes,
+      username,
+      text,
+      avatar,
+      isMe,
+      prevMessageIsSameUser,
+      isLast,
+      ...other
+    } = this.props;
 
-   return (<div
-     ref={(element) => { this.element = element; }}
-     className={classNames(classes.root, {
-       [classes.rootSelf]: isMe
-     })} {...other}>
-     <div className={classes.messageContainer}>
-       {(prevMessageIsSameUser || isMe) ? null : <div className={classes.messageHead}>
-         <ChatAvatar tiny src={avatar} username={username}/>
-         <Typography gutterBottom noWrap>{username}</Typography>
-       </div>}
+    return (
+      <div
+        ref={element => {
+          this.element = element;
+        }}
+        className={classNames(classes.root, {
+          [classes.rootSelf]: isMe,
+        })}
+        {...other}
+      >
+        <div className={classes.messageContainer}>
+          {prevMessageIsSameUser || isMe ? null : (
+            <div className={classes.messageHead}>
+              <ChatAvatar tiny src={avatar} username={username} />
+              <Typography gutterBottom noWrap>
+                {username}
+              </Typography>
+            </div>
+          )}
 
-       <Chip classes={{root: classes.messageTextRoot, label: classes.messageTextLabel}} label={text} className={classNames(classes.message, {
-           [classes.selfMessage]: isMe
-         })} />
-     </div>
-     </div>);
- }
+          <Chip
+            classes={{
+              root: classes.messageTextRoot,
+              label: classes.messageTextLabel,
+            }}
+            label={text}
+            className={classNames(classes.message, {
+              [classes.selfMessage]: isMe,
+            })}
+          />
+        </div>
+      </div>
+    );
+  }
 }
 
 Message.propTypes = {

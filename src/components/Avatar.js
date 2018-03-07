@@ -25,12 +25,18 @@ function ChatAvatar(props) {
   const avatarImageSrc = src || chooseAvatar(username);
 
   return (
-    <Avatar alt={username}
+    <Avatar
+      alt={username}
       src={avatarImageSrc}
-      className={classNames({
-        [classes.big]: big,
-        [classes.tiny]: tiny,
-      }, classes.avatar)} {...other}/>
+      className={classNames(
+        {
+          [classes.big]: big,
+          [classes.tiny]: tiny,
+        },
+        classes.avatar
+      )}
+      {...other}
+    />
   );
 }
 

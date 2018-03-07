@@ -11,8 +11,7 @@ const styles = {
     flexDirection: 'column',
     height: 'calc(100vh - 150px)',
   },
-
-}
+};
 
 class Chat extends React.Component {
   constructor(props) {
@@ -22,13 +21,13 @@ class Chat extends React.Component {
     this.service = new ChatService(socket, this.receiveMessage);
     this.state = {
       messages: [],
-    }
+    };
   }
 
   componentWillReceiveProps(nextProps) {
     const { socket } = this.state;
     if (socket !== nextProps.socket) {
-        this.service = new ChatService(nextProps.socket, this.receiveMessage);
+      this.service = new ChatService(nextProps.socket, this.receiveMessage);
     }
   }
 
@@ -36,44 +35,44 @@ class Chat extends React.Component {
     const { socket } = this.props;
 
     if (socket) {
-        this.service = new ChatService(socket, this.receiveMessage);
+      this.service = new ChatService(socket, this.receiveMessage);
     }
   }
 
-  setUsername = (username) => {
+  setUsername = username => {
     this.service.setUser(username);
-  }
+  };
 
-  receiveMessage = (data) => {
+  receiveMessage = data => {
     this.setState({
-      messages: [...this.state.messages.slice(0), data]
-    })
-  }
+      messages: [...this.state.messages.slice(0), data],
+    });
+  };
 
-  sendMessage = (text) => {
+  sendMessage = text => {
     return this.service.send(text);
-  }
+  };
 
   render() {
     const { classes } = this.props;
-    const {
-      messages
-    } = this.state;
+    const { messages } = this.state;
 
-    return <div className={classes.root}>
-      <MessageListArea messages={messages}/>
+    return (
+      <div className={classes.root}>
+        <MessageListArea messages={messages} />
 
-      <MessageCreationArea
-        user={this.service.getUser()}
-        setUsername={this.setUsername}
-        sendMessage={this.sendMessage}
+        <MessageCreationArea
+          user={this.service.getUser()}
+          setUsername={this.setUsername}
+          sendMessage={this.sendMessage}
         />
-    </div>
+      </div>
+    );
   }
 }
 
 Chat.propTypes = {
   socket: PropTypes.object,
-}
+};
 
 export default withStyles(styles)(Chat);

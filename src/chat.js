@@ -6,14 +6,12 @@ import { chooseAvatar } from './chat-avatar';
 
 export const EVENT_NAME = 'spotim/chat';
 
-export class NullSocketError extends Error {
-}
+export class NullSocketError extends Error {}
 
-export class NullUserError extends Error {
-}
+export class NullUserError extends Error {}
 
 export class ChatMessageFormatError extends Error {
-  constructor({data: rawMessageData, missingProperty} = {}, ...params) {
+  constructor({ data: rawMessageData, missingProperty } = {}, ...params) {
     super(...params);
 
     this.rawMessageData = rawMessageData;
@@ -23,20 +21,21 @@ export class ChatMessageFormatError extends Error {
 
 function validateMessageFormat(data) {
   if (!data) {
-    throw new ChatMessageFormatError('falsy object can\'t be a message');
+    throw new ChatMessageFormatError("falsy object can't be a message");
   }
 
-  ['avatar',
-  'username',
-  'text'].forEach(requiredProperty => {
+  ['avatar', 'username', 'text'].forEach(requiredProperty => {
     if (!data[requiredProperty]) {
-      throw new ChatMessageFormatError({data, missingProperty: requiredProperty}, `${requiredProperty} is required for any message`);
+      throw new ChatMessageFormatError(
+        { data, missingProperty: requiredProperty },
+        `${requiredProperty} is required for any message`
+      );
     }
   });
 }
 
 export function generateMessage(data, username, lastMessage) {
-  let message = {...data};
+  let message = { ...data };
 
   validateMessageFormat(data);
 
@@ -59,8 +58,12 @@ class Chat {
     this.lastMessage = null;
 
     if (socket) {
-      socket.on(EVENT_NAME, (data) => {
-        const message = generateMessage(data, this.user.username, this.lastMessage);
+      socket.on(EVENT_NAME, data => {
+        const message = generateMessage(
+          data,
+          this.user.username,
+          this.lastMessage
+        );
 
         messageReceiveCallback(message);
         this.lastMessage = message;
@@ -69,13 +72,21 @@ class Chat {
   }
 
   getUser() {
-    const persistedUsername = window.sessionStorage.getItem(`${EVENT_NAME}:username`);
-    const persistedAvatar = window.sessionStorage.getItem(`${EVENT_NAME}:avatar`);
+    const persistedUsername = window.sessionStorage.getItem(
+      `${EVENT_NAME}:username`
+    );
+    const persistedAvatar = window.sessionStorage.getItem(
+      `${EVENT_NAME}:avatar`
+    );
 
-    return this.user || (persistedUsername && persistedAvatar && {
-      username: persistedUsername,
-      avatar: persistedAvatar
-    });
+    return (
+      this.user ||
+      (persistedUsername &&
+        persistedAvatar && {
+          username: persistedUsername,
+          avatar: persistedAvatar,
+        })
+    );
   }
 
   setUser(username) {
@@ -88,7 +99,7 @@ class Chat {
 
     this.user = {
       username,
-      avatar
+      avatar,
     };
 
     window.sessionStorage.setItem(`${EVENT_NAME}:username`, username);
@@ -102,13 +113,17 @@ class Chat {
   }
 
   send(text) {
-     if (!this.socket) {
-       throw new NullSocketError('Chat has been initialized without a socket object!, can\'t call send yet');
-     }
+    if (!this.socket) {
+      throw new NullSocketError(
+        "Chat has been initialized without a socket object!, can't call send yet"
+      );
+    }
 
-     if (!this.user) {
-       throw new NullUserError("User hasn't been set yet, please call 'setUser'");
-     }
+    if (!this.user) {
+      throw new NullUserError(
+        "User hasn't been set yet, please call 'setUser'"
+      );
+    }
 
     this.socket.emit(EVENT_NAME, {
       text,

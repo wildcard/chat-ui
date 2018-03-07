@@ -20,5 +20,5 @@ describe('chooseAvatar', () => {
 
   it('returns a image from the included list', () => {
     expect(images).toContain(chooseAvatar(username));
-  })
+  });
 });

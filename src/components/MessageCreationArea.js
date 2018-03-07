@@ -52,9 +52,7 @@ const styles = theme => {
     rightIcon: {
       marginLeft: theme.spacing.unit,
     },
-    button: {
-
-    }
+    button: {},
   };
 };
 
@@ -76,7 +74,7 @@ class MessageCreationArea extends React.Component {
     });
 
     if (name === 'message' && event.target.value) {
-      this.setState({ emptyMessage: false })
+      this.setState({ emptyMessage: false });
     } else if (name === 'username') {
       this.props.setUsername(event.target.value);
     }
@@ -86,58 +84,62 @@ class MessageCreationArea extends React.Component {
     this.setState({ message: '' });
   }
 
-  send = (e) => {
+  send = e => {
     e && e.preventDefault();
 
-    const {
-      message,
-    } = this.state;
+    const { message } = this.state;
 
-    const {
-      sendMessage,
-    } = this.props;
+    const { sendMessage } = this.props;
 
     if (!message) {
-      this.setState({ emptyMessage: true })
+      this.setState({ emptyMessage: true });
       return;
     }
 
     if (sendMessage) {
       sendMessage(message);
-      this.setState({ message: '' })
+      this.setState({ message: '' });
     }
-  }
+  };
 
-  handleMessageKeyDown = (e) => {
-    if (e.keyCode === 13 && (
-      !e.altKey && !e.ctrlKey && !e.shiftKey
-    )) {
-        this.send();
-        e.preventDefault();
+  handleMessageKeyDown = e => {
+    if (e.keyCode === 13 && (!e.altKey && !e.ctrlKey && !e.shiftKey)) {
+      this.send();
+      e.preventDefault();
     }
-  }
+  };
 
   render() {
     const { classes } = this.props;
     const messageError = this.state.emptyMessage && this.state.message === '';
 
-    return (<form className={classes.container}
+    return (
+      <form
+        className={classes.container}
         onSubmit={this.send}
-        noValidate autoComplete="off">
+        noValidate
+        autoComplete="off"
+      >
         <div className={classes.inputContainer}>
           <TextField
-                id="username"
-                label="User Name"
-                className={classes.textField}
-                value={this.state.username}
-                onChange={this.handleChange('username')}
-                margin="normal"
-                InputProps={{
-                  startAdornment: this.state.username && <InputAdornment position="start">
-                    <ChatAvatar tiny username={this.state.username} src={this.avatar} />
-                  </InputAdornment>,
-                }}
-              />
+            id="username"
+            label="User Name"
+            className={classes.textField}
+            value={this.state.username}
+            onChange={this.handleChange('username')}
+            margin="normal"
+            InputProps={{
+              startAdornment: this.state.username && (
+                <InputAdornment position="start">
+                  <ChatAvatar
+                    tiny
+                    username={this.state.username}
+                    src={this.avatar}
+                  />
+                </InputAdornment>
+              ),
+            }}
+          />
 
           <TextField
             error={messageError}
@@ -149,19 +151,27 @@ class MessageCreationArea extends React.Component {
             value={this.state.message}
             onChange={this.handleChange('message')}
             className={classes.messageTextField}
-            helperText={messageError ? "I'm sure you have something smart to share with your friends 🤓" : null}
+            helperText={
+              messageError
+                ? "I'm sure you have something smart to share with your friends 🤓"
+                : null
+            }
             margin="normal"
           />
         </div>
 
         <Tooltip id="tooltip-send-button" title="Send" placement="top">
-          <Button onClick={this.send}
+          <Button
+            onClick={this.send}
             className={classes.button}
-            variant="fab" color="primary">
-            <SendIcon/>
+            variant="fab"
+            color="primary"
+          >
+            <SendIcon />
           </Button>
         </Tooltip>
-      </form>);
+      </form>
+    );
   }
 }
 
@@ -170,6 +180,6 @@ MessageCreationArea.propTypes = {
   user: UserPropType,
   setUsername: PropTypes.func.isRequired,
   sendMessage: PropTypes.func.isRequired,
-}
+};
 
-export default withStyles(styles)(MessageCreationArea)
+export default withStyles(styles)(MessageCreationArea);

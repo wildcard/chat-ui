@@ -11,12 +11,14 @@ the word channel is not used appropriately
 - stoped at 05/03/2018 23:30 - working solution, missing more UI/UX styling + tests
 
 - started 07/03/2018 01:30
-- styled the components, better chat experince (enter), use pre wrap to preserve line breaks
+- styled the components, better chat experience (enter), use pre wrap to preserve line breaks
 - stopped 07/03/2018 05:00
 - 07/03/2018 05:30, added scrollIntoView for the last message (so you can keep following)
 
 - started 07/03/2018 18:00 - 20:00 - start testing
 - started 07/03/2018 21:30 - 22:30  - unit testing business
+- 07/03/2018 23:30 - 00:15  - snapshot tests
+- 07/03/2018 23:30 - 00:30  - prettier
 
 Feedback regarding this exam is always welcomed.
 What did you like? What didn't you like? What was missing?

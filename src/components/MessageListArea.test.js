@@ -4,11 +4,7 @@
 // messages.
 
 describe('MessageListArea', () => {
-  it('Rendered chat messages should show the avatar, username and chat message', () => {
-    
-  });
+  it('Rendered chat messages should show the avatar, username and chat message', () => {});
 
-  test('Your own messages will have a different background color than other chat messages.', () => {
-
-  });
+  test('Your own messages will have a different background color than other chat messages.', () => {});
 });
