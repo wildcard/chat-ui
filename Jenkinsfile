@@ -14,7 +14,7 @@ pipeline {
     }
     stage('test') {
       steps {
-        sh 'npm test -- --ci --testResultsProcessor="jest-junit"'
+        sh 'npm test -- --ci --testResultsProcessor="jest-junit" '
       }
     }
   }
