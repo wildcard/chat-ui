@@ -17,6 +17,11 @@ pipeline {
                 sh 'npm test -- --ci --testResultsProcessor="jest-junit" '
             }
         }
+        stage('build') {
+            steps {
+                sh 'npm run build'
+            }
+        }    
     }
     post {
         always {
