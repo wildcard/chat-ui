@@ -15,8 +15,16 @@ pipeline {
     stage('test') {
       steps {
         sh 'npm test -- --ci --testResultsProcessor="jest-junit" '
-        junit 'junit.xml' 
       }
+    }
+    post {
+        always {
+            junit 'junit.xml'
+        }
+        success {
+            sh 'tar -zcvf build.tar.gz build'
+            archiveArtifacts artifacts: 'build.tar.gz', fingerprint: true
+        }
     }
   }
   environment {
