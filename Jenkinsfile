@@ -15,7 +15,8 @@ pipeline {
         stage('test') {
             steps {
                 sh 'npm test -- --ci --testResultsProcessor="jest-junit" '
-            }
+                junit 'junit.xml'
+           }
         }
         stage('build') {
             steps {
@@ -25,11 +26,25 @@ pipeline {
     }
     post {
         always {
-            junit 'junit.xml'
+            deleteDir()
         }
         success {
+            echo 'I succeeeded!'
+            slackSend channel: '#ops-room',
+                  color: 'good',
+                  message: "The pipeline ${currentBuild.fullDisplayName} completed successfully."
             sh 'tar -zcvf build.tar.gz build'
-                archiveArtifacts artifacts: 'build.tar.gz',            fingerprint: true
+            archiveArtifacts artifacts: 'build.tar.gz', fingerprint: true
+            echo 'Placeholder for deploy script'
+        }
+        unstable {
+            echo 'I am unstable :/'
+        }
+        failure {
+            echo 'I failed :('
+        }
+        changed {
+            echo 'Things were different before...'
         }
     }
     environment {
