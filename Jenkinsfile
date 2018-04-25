@@ -25,9 +25,6 @@ pipeline {
         }    
     }
     post {
-        always {
-            deleteDir()
-        }
         success {
             echo 'I succeeeded!'
             slackSend channel: '#ops-room',
@@ -45,6 +42,9 @@ pipeline {
         }
         changed {
             echo 'Things were different before...'
+        }
+        cleanup {
+             deleteDir()
         }
     }
     environment {
